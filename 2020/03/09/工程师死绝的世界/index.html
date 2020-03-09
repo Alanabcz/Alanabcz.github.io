@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="最近一款网页游戏在各个码农群刷屏，源自 paiza.jp 平台推出的一款面向程序员的编程游戏。名字叫《エンジニアが死滅シタ世界》（工程师灭绝了的世界）。游戏讲的是全世界所有的 IT 工程师因为感染病毒死亡，IT 技术的消失导致了国家混乱，玩家则需要负责解决各种编程问题，来拯救世界（给妹子换装）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游戏《工程师死绝的世界》">
+<meta property="og:url" content="http://yoursite.com/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/index.html">
+<meta property="og:site_name" content="念念の博客">
+<meta property="og:description" content="最近一款网页游戏在各个码农群刷屏，源自 paiza.jp 平台推出的一款面向程序员的编程游戏。名字叫《エンジニアが死滅シタ世界》（工程师灭绝了的世界）。游戏讲的是全世界所有的 IT 工程师因为感染病毒死亡，IT 技术的消失导致了国家混乱，玩家则需要负责解决各种编程问题，来拯救世界（给妹子换装）。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/001.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/002.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/003.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/004.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/005.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/006.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/007.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/008.png">
+<meta property="article:published_time" content="2020-03-09T05:57:55.000Z">
+<meta property="article:modified_time" content="2020-03-09T08:23:32.041Z">
+<meta property="article:author" content="念念">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/001.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>游戏《工程师死绝的世界》 | 念念の博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">念念の博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">这里是兴趣使然的无名小站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">0</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">0</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">2</span></a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/001.jpg">
+      <meta itemprop="name" content="念念">
+      <meta itemprop="description" content="二次元，音乐，Code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="念念の博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          游戏《工程师死绝的世界》
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-09 13:57:55 / 修改时间：16:23:32" itemprop="dateCreated datePublished" datetime="2020-03-09T13:57:55+08:00">2020-03-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/001.png" alt><br>最近一款网页游戏在各个码农群刷屏，源自 paiza.jp 平台推出的一款面向程序员的编程游戏。名字叫《エンジニアが死滅シタ世界》（工程师灭绝了的世界）。游戏讲的是全世界所有的 IT 工程师因为感染病毒死亡，IT 技术的消失导致了国家混乱，玩家则需要负责解决各种编程问题，来拯救世界（给妹子换装）。</p>
+<a id="more"></a>
+<h1 id="玩法"><a href="#玩法" class="headerlink" title="玩法"></a>玩法</h1><p>游戏网址；<a href="https://paiza.jp/botchi/" target="_blank" rel="noopener">https://paiza.jp/botchi/</a><br>游戏玩法很简单，游戏提供了一个地n图供玩家选择，地图上分别有A、B、C、D四种难度的区域，玩家需要解决各个区域的编程问题。<br><img src="/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/002.png" alt><br>问题解决后，可以获得对应的装扮，在据点换装。<br><img src="/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/003.png" alt><br>装扮除了解决地图上的问题可以获得之外，还有一些装扮可以通过体验网站其他功能来获得。</p>
+<h1 id="上手"><a href="#上手" class="headerlink" title="上手"></a>上手</h1><p>从难度 D 的问题开始解决吧。</p>
+<h2 id="问题D：荒れ果てた警察署-MISSION-LEVEL-D"><a href="#问题D：荒れ果てた警察署-MISSION-LEVEL-D" class="headerlink" title="问题D：荒れ果てた警察署 [MISSION LEVEL: D]"></a>问题D：荒れ果てた警察署 [MISSION LEVEL: D]</h2><p> あなたは 0 から 9 の数字を 3 つ入力すると開く扉を開こうとしています。</p>
+<pre><code>鍵の番号は左から 2 つまで判明しています。 3 つ目に関しては以下の法則で決まることがわかりました。
+
+・2 つ目までをすべて足す
+・足したものを 10 で割ったときの余り
+
+2 つ目までの数字が与えられるので 3 つ目を計算し出力してください。</code></pre><p>解释：<br>想打开门需要输入3个0~9之间的数字。前两个数字已经知道了，第三个数字有以下两个法则决定：<br>1.两数相加<br>2.相加结果对10进行取余，用给出的前两个数字，来计算第3个数字。</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自分の得意な言語で</span></span><br><span class="line"><span class="comment">// Let's チャレンジ！！</span></span><br><span class="line"></span><br><span class="line">$input_lines = fgets(STDIN);</span><br><span class="line">$input_lines = explode(<span class="string">' '</span>, $input_lines);</span><br><span class="line">$sum = $input_lines[<span class="number">0</span>] + $input_lines[<span class="number">1</span>];</span><br><span class="line">echo $sum%10;</span><br></pre></td></tr></table></figure>
+<h2 id="问题A：有名なプールサイド-MISSION-LEVEL-A"><a href="#问题A：有名なプールサイド-MISSION-LEVEL-A" class="headerlink" title="问题A：有名なプールサイド [MISSION LEVEL: A]"></a>问题A：有名なプールサイド [MISSION LEVEL: A]</h2><p>原题<br><a href="https://paiza.jp/botchi/challenges/botchi_a_1001" target="_blank" rel="noopener">https://paiza.jp/botchi/challenges/botchi_a_1001</a><br>翻译（原贴：<a href="https://iobaka.com/blog/98.html）" target="_blank" rel="noopener">https://iobaka.com/blog/98.html）</a><br><img src="/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/004.png" alt></p>
+<pre><code>你这次开始设计村庄规划了。
+村庄南北向为 H ，东西向为 W ，总计 H × W 个格子。
+假设给每个格子分配一个坐标，就如图1所示。
+
+然后会列给你一个村庄建筑清单。
+每栋建筑物都是矩形形状，并且有一个门。
+门的位置不会是矩形的四个顶点。
+就如图2所示。</code></pre><p><img src="/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/005.png" alt></p>
+<pre><code>由于建筑清单里有很多建筑物，所以并不是所有建筑全部都能建造在村子里。
+所以你需要决定村子里需要建哪些建筑。
+
+在决定建筑物的建筑地点时，需要遵守以下3点：
+1.任何两个建筑物，不允许重叠
+2.建筑物建筑方向需要和清单里给的一样，不许旋转放置建筑物。
+3.任何两个建筑物，可以通过没有建筑的方块，和建筑物的门之间移动。
+
+规则3如图3所示，
+灰色建筑物和绿色建筑物之间，可以通过没有建筑的方块，以两个建筑物的门为起点和终点，进行移动。
+而蓝色建筑物，则和其他两个建筑物之间没有移动方法，所以蓝色建筑物不满足规则3。</code></pre><p><img src="/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/006.png" alt></p>
+<pre><code>这个村子每个格子的建筑物可以产生1万日元的利润，
+请编写一个程序，计算建筑物的放置位置，尽可能多的产生利润。
+
+至少放置一个能产生利润的建筑物，就判定为正确答案，并根据利润计算得分。
+（需要注意的是：1.建筑的门前至少有一个格子 2.建筑的门不会在建筑的四个顶点位置）
+解答：
+这道题要求是尽可能产生最多的利润，但是只要至少放置一个建筑物，就算为过关。
+所以思路是，先创建一个二维数组，画出整个村庄，用0标识没有建筑的空格子。
+然后创建个数组依次存入每栋建筑的长、宽以及门的坐标。
+
+然后循环遍历建筑物，找出符合建造条件的建筑，放到村庄里，输出结果即可。
+要找出符合条件的建筑需要以下几个条件：
+1.建筑物的高度要小于或等于村庄总高度。
+2.建筑物的宽度要小于或等于村庄总宽度。
+3.如果门在建筑物的最左侧或最右侧，则建筑物的宽度要小于村庄总宽度。
+4.如果门在建筑物的最顶排或最底排，则建筑物的高度要小于村庄总高度。
+
+用以上四条规则，就可以筛选出符合建造规范的建筑。
+但是筛选出来之后，不能直接在村庄上建造，需要对建筑进行偏移。
+比如建筑物为 3(H)*4(W)，门在最顶排时，输出需要为：
+0 0 0 0 0
+1 1 1 1 0
+1 1 1 1 0
+1 1 1 1 0
+来保证门的正前方是空地。
+同理，门在最左侧时，输出则需要为：
+0 1 1 1 1
+0 1 1 1 1
+0 1 1 1 1
+0 0 0 0 0
+最后程序如下：</code></pre><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> H, W, N;</span><br><span class="line"><span class="keyword">int</span> vis[<span class="number">4</span>][<span class="number">2</span>] = &#123; <span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">place</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; dp;</span><br><span class="line">	<span class="keyword">int</span> score;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> h, w, r, c, dir, id, a, b;</span><br><span class="line">	<span class="keyword">bool</span> use;</span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node&amp; temp) <span class="keyword">const</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (h * w != temp.h * temp.w) <span class="keyword">return</span> h * w &gt; temp.h* temp.w;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">abs</span>(h - w) &lt; <span class="built_in">abs</span>(temp.h - temp.w);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;node&gt; v1;</span><br><span class="line"><span class="built_in">vector</span>&lt;place&gt; v2;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; tmp;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; H &gt;&gt; W &gt;&gt; N;</span><br><span class="line">	v1.resize(N);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; v1[i].h &gt;&gt; v1[i].w &gt;&gt; v1[i].r &gt;&gt; v1[i].c;</span><br><span class="line">		<span class="keyword">if</span> (v1[i].r == <span class="number">1</span>) v1[i].dir = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (v1[i].r == v1[i].h) v1[i].dir = <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (v1[i].c == <span class="number">1</span>) v1[i].dir = <span class="number">3</span>;</span><br><span class="line">		<span class="keyword">else</span> v1[i].dir = <span class="number">4</span>;</span><br><span class="line">		v1[i].id = i + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> n, <span class="keyword">int</span> id)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = a; i &lt; a + v1[n].h; i++) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = b; j &lt; b + v1[n].w; j++) </span><br><span class="line">		&#123;</span><br><span class="line">			v2.back().ans[i][j] = id;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tmp[a][b] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> na = a + vis[i][<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">int</span> nb = b + vis[i][<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">if</span> (na &gt;= <span class="number">0</span> &amp;&amp; nb &gt;= <span class="number">0</span> &amp;&amp; na &lt; H &amp;&amp; nb &lt; W &amp;&amp; !tmp[na][nb]) </span><br><span class="line">		&#123;</span><br><span class="line">			dfs(na, nb);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">judge</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (b + v1[n].w &gt; W || a + v1[n].h &gt; H) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = a; i &lt; a + v1[n].h; i++) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = b; j &lt; b + v1[n].w; j++) </span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (v2.back().ans[i][j] || v2.back().dp[i][j]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> aa = a + v1[n].r - <span class="number">1</span>, bb = b + v1[n].c - <span class="number">1</span>;</span><br><span class="line">	draw(a, b, n, v1[n].id);</span><br><span class="line">	tmp = v2.back().ans;</span><br><span class="line">	dfs(aa, bb);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> i : tmp) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> j : i) </span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (!j) </span><br><span class="line">			&#123;</span><br><span class="line">				draw(a, b, n, <span class="number">0</span>);</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	v2.back().dp[aa + vis[v1[n].dir - <span class="number">1</span>][<span class="number">0</span>]][bb + vis[v1[n].dir - <span class="number">1</span>][<span class="number">1</span>]] = <span class="number">1</span>;</span><br><span class="line">	v1[n].a = a, v1[n].b = b, v1[n].use = <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">check</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> c1 = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> i : v2.back().ans) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> j : i) </span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (j) c1++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	v2.back().score = c1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solvef</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; N; k++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (v1[k].use) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; H; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; W; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (judge(i, j, k)) <span class="keyword">goto</span> next;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	next:;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">movespace</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (!v1[i].use) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">int</span> a = v1[i].a, b = v1[i].b;</span><br><span class="line">		<span class="keyword">int</span> aa = a + v1[i].r - <span class="number">1</span>, bb = b + v1[i].c - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (a - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; !v2.back().ans[a - <span class="number">1</span>][b]) </span><br><span class="line">		&#123;</span><br><span class="line">			v2.back().dp[aa + vis[v1[i].dir - <span class="number">1</span>][<span class="number">0</span>]][bb + vis[v1[i].dir - <span class="number">1</span>][<span class="number">1</span>]] = <span class="number">0</span>;</span><br><span class="line">			draw(a, b, i, <span class="number">0</span>);</span><br><span class="line">			<span class="keyword">if</span> (judge(a - <span class="number">1</span>, b, i))</span><br><span class="line">			&#123;</span><br><span class="line">				movespace();</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				draw(a, b, i, v1[i].id);</span><br><span class="line">				v2.back().dp[aa + vis[v1[i].dir - <span class="number">1</span>][<span class="number">0</span>]][bb + vis[v1[i].dir - <span class="number">1</span>][<span class="number">1</span>]] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (b - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; !v2.back().ans[a][b - <span class="number">1</span>]) </span><br><span class="line">		&#123;</span><br><span class="line">			v2.back().dp[aa + vis[v1[i].dir - <span class="number">1</span>][<span class="number">0</span>]][bb + vis[v1[i].dir - <span class="number">1</span>][<span class="number">1</span>]] = <span class="number">0</span>;</span><br><span class="line">			draw(a, b, i, <span class="number">0</span>);</span><br><span class="line">			<span class="keyword">if</span> (judge(a, b - <span class="number">1</span>, i)) </span><br><span class="line">			&#123;</span><br><span class="line">				movespace();</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				draw(a, b, i, v1[i].id);</span><br><span class="line">				v2.back().dp[aa + vis[v1[i].dir - <span class="number">1</span>][<span class="number">0</span>]][bb + vis[v1[i].dir - <span class="number">1</span>][<span class="number">1</span>]] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initsolve</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">place</span> <span class="title">plc</span>;</span></span><br><span class="line">	plc.ans.assign(H, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(W, <span class="number">0</span>));</span><br><span class="line">	plc.dp.assign(H, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(W, <span class="number">0</span>));</span><br><span class="line">	v2.emplace_back(plc);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : v1) </span><br><span class="line">	&#123;</span><br><span class="line">		i.a = <span class="number">0</span>, i.b = <span class="number">0</span>, i.use = <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	initsolve();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; N; k++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">switch</span> (v1[k].dir)</span><br><span class="line">		&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = H - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) </span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = W - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) </span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span> (judge(i, j, k)) <span class="keyword">goto</span> next;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; H; i++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; W; j++)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span> (judge(i, j, k)) <span class="keyword">goto</span> next;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = W - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = H - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span> (judge(i, j, k)) <span class="keyword">goto</span> next;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; W; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; H; i++)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span> (judge(i, j, k)) <span class="keyword">goto</span> next;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	next:;</span><br><span class="line">	&#125;</span><br><span class="line">	movespace();</span><br><span class="line">	solvef();</span><br><span class="line">	check();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	initsolve();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; N; k++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">switch</span> (v1[k].dir)</span><br><span class="line">		&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = H - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; W; j++)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span> (judge(i, j, k)) <span class="keyword">goto</span> next;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; H; i++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = W - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) </span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span> (judge(i, j, k)) <span class="keyword">goto</span> next;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = W - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; H; i++) </span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span> (judge(i, j, k)) <span class="keyword">goto</span> next;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; W; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = H - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) </span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span> (judge(i, j, k)) <span class="keyword">goto</span> next;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	next:;</span><br><span class="line">	&#125;</span><br><span class="line">	movespace();</span><br><span class="line">	solvef();</span><br><span class="line">	check();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	initsolve();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; N; k++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">switch</span> (v1[k].dir)</span><br><span class="line">		&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = H - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = W - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) </span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span> (judge(i, j, k)) <span class="keyword">goto</span> next;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; H; i++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; W; j++)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span> (judge(i, j, k)) <span class="keyword">goto</span> next;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = W - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; H; i++)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span> (judge(i, j, k)) <span class="keyword">goto</span> next;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; W; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; H; i++) </span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span> (judge(i, j, k)) <span class="keyword">goto</span> next;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	next:;</span><br><span class="line">	&#125;</span><br><span class="line">	movespace();</span><br><span class="line">	solvef();</span><br><span class="line">	check();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cal</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> c1 = <span class="number">0</span>, index = <span class="number">0</span>, len = v2.<span class="built_in">size</span>();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//cout &lt;&lt; v2[i].score &lt;&lt; endl;</span></span><br><span class="line">		<span class="keyword">if</span> (v2[i].score &gt; c1) </span><br><span class="line">		&#123;</span><br><span class="line">			c1 = v2[i].score;</span><br><span class="line">			index = i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> i : v2[index].ans) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; W - <span class="number">1</span>; j++) </span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; i[j] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; i[W - <span class="number">1</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios_base::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="number">0</span>), <span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">	init();</span><br><span class="line">	sort(v1.<span class="built_in">begin</span>(), v1.<span class="built_in">end</span>());</span><br><span class="line">	solve();</span><br><span class="line">	solve1();</span><br><span class="line">	solve2();</span><br><span class="line">	cal();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>该解决办法是基于深度优先搜索的暴力解法！<br><img src="/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/007.png" alt></p>
+<p>这款游戏目前也就到这里了，<br>如果之后更新了其他新的关卡，那么再回来继续玩吧。<br><img src="/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/008.png" alt></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/03/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#玩法"><span class="nav-number">1.</span> <span class="nav-text">玩法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上手"><span class="nav-number">2.</span> <span class="nav-text">上手</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题D：荒れ果てた警察署-MISSION-LEVEL-D"><span class="nav-number">2.1.</span> <span class="nav-text">问题D：荒れ果てた警察署 [MISSION LEVEL: D]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题A：有名なプールサイド-MISSION-LEVEL-A"><span class="nav-number">2.2.</span> <span class="nav-text">问题A：有名なプールサイド [MISSION LEVEL: A]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="念念"
+      src="/images/001.jpg">
+  <p class="site-author-name" itemprop="name">念念</p>
+  <div class="site-description" itemprop="description">二次元，音乐，Code</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">念念</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes : 0,
+          toolbar  : 0,
+          statusbar: 0,
+          pagemode : 'thumbs',
+          view     : 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height   : element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
