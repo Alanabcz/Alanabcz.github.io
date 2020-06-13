@@ -22,19 +22,23 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="游戏地址大学期间的毕业设计，做的是一款模仿宝可梦的小游戏，使用的是c2引擎。">
+  <meta name="description" content="KMP算法应该是每一本《数据结构》书都会讲的，算是知名度最高的算法之一了，但很可惜，我大二那年压根就没看懂过~ 之后也在很多地方也都经常看到讲解KMP算法的文章，看久了好像也知道是怎么一回事，但总感觉有些地方自己还是没有完全懂明白。这两天花了点时间总结一下，有点小体会，我希望可以通过我自己的语言来把这个算法的一些细节梳理清楚，也算是考验一下自己有真正理解这个算法。什么是KMP算法： KMP是三位大">
 <meta property="og:type" content="article">
-<meta property="og:title" content="宝可梦蓝宝石">
-<meta property="og:url" content="http://yoursite.com/2020/03/09/%E5%AE%9D%E5%8F%AF%E6%A2%A6%E8%93%9D%E5%AE%9D%E7%9F%B3/index.html">
+<meta property="og:title" content="KMP算法详解">
+<meta property="og:url" content="http://yoursite.com/2020/06/13/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="念念の博客">
-<meta property="og:description" content="游戏地址大学期间的毕业设计，做的是一款模仿宝可梦的小游戏，使用的是c2引擎。">
+<meta property="og:description" content="KMP算法应该是每一本《数据结构》书都会讲的，算是知名度最高的算法之一了，但很可惜，我大二那年压根就没看懂过~ 之后也在很多地方也都经常看到讲解KMP算法的文章，看久了好像也知道是怎么一回事，但总感觉有些地方自己还是没有完全懂明白。这两天花了点时间总结一下，有点小体会，我希望可以通过我自己的语言来把这个算法的一些细节梳理清楚，也算是考验一下自己有真正理解这个算法。什么是KMP算法： KMP是三位大">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-09T15:09:03.000Z">
-<meta property="article:modified_time" content="2020-03-24T14:18:32.795Z">
+<meta property="og:image" content="http://yoursite.com/2020/06/13/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/001.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/13/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/002.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/13/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/003.png">
+<meta property="article:published_time" content="2020-06-13T14:13:20.967Z">
+<meta property="article:modified_time" content="2020-06-13T14:47:37.205Z">
 <meta property="article:author" content="念念">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/13/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/001.png">
 
-<link rel="canonical" href="http://yoursite.com/2020/03/09/%E5%AE%9D%E5%8F%AF%E6%A2%A6%E8%93%9D%E5%AE%9D%E7%9F%B3/">
+<link rel="canonical" href="http://yoursite.com/2020/06/13/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/">
 
 
 <script id="page-configurations">
@@ -46,7 +50,7 @@
   };
 </script>
 
-  <title>宝可梦蓝宝石 | 念念の博客</title>
+  <title>KMP算法详解 | 念念の博客</title>
   
 
 
@@ -166,7 +170,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/09/%E5%AE%9D%E5%8F%AF%E6%A2%A6%E8%93%9D%E5%AE%9D%E7%9F%B3/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/13/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/001.jpg">
@@ -179,7 +183,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          宝可梦蓝宝石
+          KMP算法详解
         </h1>
 
         <div class="post-meta">
@@ -188,16 +192,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-03-09 23:09:03" itemprop="dateCreated datePublished" datetime="2020-03-09T23:09:03+08:00">2020-03-09</time>
+              <time title="创建时间：2020-06-13 22:13:20 / 修改时间：22:47:37" itemprop="dateCreated datePublished" datetime="2020-06-13T22:13:20+08:00">2020-06-13</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-24 22:18:32" itemprop="dateModified" datetime="2020-03-24T22:18:32+08:00">2020-03-24</time>
-              </span>
 
           
 
@@ -210,8 +208,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a href="https://a1124338301.github.io/" target="_blank" rel="noopener">游戏地址</a><br>大学期间的毕业设计，做的是一款模仿宝可梦的小游戏，使用的是c2引擎。</p>
+        <p>KMP算法应该是每一本《数据结构》书都会讲的，算是知名度最高的算法之一了，但很可惜，我大二那年压根就没看懂过<del>~</del></p>
+<p>之后也在很多地方也都经常看到讲解KMP算法的文章，看久了好像也知道是怎么一回事，但总感觉有些地方自己还是没有完全懂明白。这两天花了点时间总结一下，有点小体会，我希望可以通过我自己的语言来把这个算法的一些细节梳理清楚，也算是考验一下自己有真正理解这个算法。<br>什么是KMP算法：</p>
+<p>KMP是三位大牛：D.E.Knuth、J.H.Morris和V.R.Pratt同时发现的。其中第一位就是《计算机程序设计艺术》的作者！！</p>
+<p>KMP算法要解决的问题就是在字符串（也叫主串）中的模式（pattern）定位问题。说简单点就是我们平时常说的关键字搜索。模式串就是关键字（接下来称它为P），如果它在一个主串（接下来称为T）中出现，就返回它的具体位置，否则返回-1（常用手段）。<br><img src="/2020/06/13/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/001.png" alt></p>
+<a id="more"></a>
 
+<p>首先，对于这个问题有一个很单纯的想法：从左到右一个个匹配，如果这个过程中有某个字符不匹配，就跳回去，将模式串向右移动一位。这有什么难的？</p>
+<p>我们可以这样初始化：<br><img src="/2020/06/13/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/002.png" alt></p>
+<p>之后我们只需要比较i指针指向的字符和j指针指向的字符是否一致。如果一致就都向后移动，如果不一致，如下图：</p>
+<p>A和E不相等，那就把i指针移回第1位（假设下标从0开始），j移动到模式串的第0位，然后又重新开始这个步骤：<br><img src="/2020/06/13/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/003.png" alt></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">string</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cin</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cout</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> next[<span class="number">1024</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetNext</span><span class="params">(<span class="built_in">string</span> s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sLen = s.length(), k = <span class="number">-1</span>, j = <span class="number">0</span>;</span><br><span class="line">    next[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span> (j &lt;= sLen - <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">-1</span> || s[j] == s[k]) next[++j] = ++k;</span><br><span class="line">        <span class="keyword">else</span> k = next[k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">KmpSearch</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> sLen = s.length(), pLen = p.length();</span><br><span class="line">    <span class="keyword">while</span> (i &lt; sLen &amp;&amp; j &lt; pLen)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (j == <span class="number">-1</span> || s[i] == p[j]) i++, j++;</span><br><span class="line">        <span class="keyword">else</span> j = next[j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (j == pLen) <span class="keyword">return</span> i - j;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> s1, s2;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">    GetNext(s1);</span><br><span class="line">	<span class="comment">//for (int i = 0; i &lt;= s1.length(); i++) cout &lt;&lt; next[i] &lt;&lt; ' ';</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; KmpSearch(s1, s2);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -226,13 +233,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/09/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%AD%BB%E7%BB%9D%E7%9A%84%E4%B8%96%E7%95%8C/" rel="prev" title="游戏《工程师死绝的世界》">
-      <i class="fa fa-chevron-left"></i> 游戏《工程师死绝的世界》
+    <a href="/2020/03/09/%E5%AE%9D%E5%8F%AF%E6%A2%A6%E8%93%9D%E5%AE%9D%E7%9F%B3/" rel="prev" title="宝可梦蓝宝石">
+      <i class="fa fa-chevron-left"></i> 宝可梦蓝宝石
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/06/13/KMP%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/" rel="next" title="KMP算法详解">
-      KMP算法详解 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
